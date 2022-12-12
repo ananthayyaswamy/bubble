@@ -21,6 +21,6 @@ public class AppTableServiceImpl implements AppTableService {
         }
 
         AppTable newAppTable = appTableRepository.save(appTable);
-        return null;
+        return newAppTable;
     }
 }
