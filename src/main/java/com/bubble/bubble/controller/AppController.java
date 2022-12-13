@@ -27,5 +27,15 @@ public class AppController {
         System.out.println("call returned");
         return app;
     }
+    @DeleteMapping("{userId}/delete/{appId}/")
+    public List<App> deleteApp(@PathVariable(value = "appId")Long appId,@PathVariable(value = "userId") Long userID){
+       return appService.deleteApp(userID,appId);
+    }
+    @PutMapping("{userId}/")
+    public ResponseEntity<App> editApp(@PathVariable(value = "userId")Long userID,@RequestBody App app){
+        App appResponse=appService.editApp(app,userID);
+        return new ResponseEntity<>(appResponse,HttpStatus.OK);
+
+    }
 
 }

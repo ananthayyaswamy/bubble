@@ -2,6 +2,7 @@ package com.bubble.bubble.service.impl;
 
 import com.bubble.bubble.entity.App;
 import com.bubble.bubble.entity.User;
+import com.bubble.bubble.exception.ResourceNotFoundException;
 import com.bubble.bubble.repository.AppRepository;
 import com.bubble.bubble.repository.UserRepository;
 import com.bubble.bubble.service.AppService;
@@ -33,5 +34,21 @@ public class AppServiceImpl implements AppService {
            System.out.println(a.toString());
        }
        return apps;
+    }
+
+    @Override
+    public List<App> deleteApp(long userID, long appId) {
+        appRepository.deleteById(appId);
+
+        return getAppByUserID(userID);
+    }
+
+    @Override
+    public App editApp(App app, long userId) {
+        System.out.println(app.toString());
+        App app1 =appRepository.findById(app.getId()).orElseThrow(() -> new ResourceNotFoundException("App", "id", app.getId()));
+        app1.setAppName(app.getAppName());
+        App updatedApp=appRepository.save(app1);
+        return updatedApp;
     }
 }
