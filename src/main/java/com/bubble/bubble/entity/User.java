@@ -1,6 +1,7 @@
 package com.bubble.bubble.entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.util.HashSet;
@@ -14,7 +15,8 @@ public class User {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
-    private long userId;
+    @Column(name = "user_id")
+    private long id;
     private String userName;
     private String email;
     private String password;
