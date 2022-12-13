@@ -8,4 +8,5 @@ import java.util.Set;
 
 public interface AppRepository extends JpaRepository<App,Long> {
     List<App> findByUserTableId(long UserId);
+
 }

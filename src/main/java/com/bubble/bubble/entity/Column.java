@@ -1,5 +1,6 @@
 package com.bubble.bubble.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,7 +25,7 @@ public class Column {
     private String nullable;
 
 
-
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "app_table_id")
     private AppTable appTable;

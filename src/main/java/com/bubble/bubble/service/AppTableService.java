@@ -3,6 +3,9 @@ package com.bubble.bubble.service;
 import com.bubble.bubble.entity.App;
 import com.bubble.bubble.entity.AppTable;
 
+import java.util.List;
+
 public interface AppTableService {
-    AppTable createAppTable(AppTable appTable);
+    AppTable createAppTable(AppTable appTable,long userId,long appId);
+    List<AppTable> getAppTableByAppID(long appId);
 }
