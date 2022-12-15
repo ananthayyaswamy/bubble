@@ -21,7 +21,7 @@ public class AppTableServiceImpl implements AppTableService {
     private AppRepository appRepository;
     @Override
     public AppTable createAppTable(AppTable appTable,long userId,long appId) {
-        App app= appRepository.findById(appId).orElseThrow(() -> new ResourceNotFoundException("Post", "id", appId));
+        App app= appRepository.findById(appId).orElseThrow(() -> new ResourceNotFoundException("APP", "id", appId));
         appTable.setApp(app);
         Set<Column> column = appTable.getColumn();
         for( Column c:column){

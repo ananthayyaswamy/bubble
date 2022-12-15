@@ -26,12 +26,14 @@ public class AppTable {
     private String logicalName;
     private String primaryKey;
     @JsonManagedReference
-    @OneToMany(mappedBy = "appTable",cascade = CascadeType.ALL ,orphanRemoval = true)
-    private Set<Column> column =new HashSet<>();
-//////////////////
+    @OneToMany(mappedBy = "appTable", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Column> column = new HashSet<>();
+    //////////////////
 //
-@JsonBackReference
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name="app_id")
-private App app;
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "app_id")
+    private App app;
+
+///////
 }

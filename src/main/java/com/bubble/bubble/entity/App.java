@@ -25,4 +25,8 @@ public class App {
     @JsonManagedReference
     @OneToMany(mappedBy = "app" ,cascade = CascadeType.ALL ,orphanRemoval = true)
     private Set<AppTable> appTable =new HashSet<>();
+    ///////////
+    @JsonManagedReference
+    @OneToMany(mappedBy = "app" ,cascade = CascadeType.ALL ,orphanRemoval = true)
+    private Set<Join> joinTable =new HashSet<>();
 }
