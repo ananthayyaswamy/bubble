@@ -25,4 +25,15 @@ public class AppTableController {
     public List<AppTable> getAppTableByAppId(@PathVariable(value = "appId")Long appId){
         return appTableService.getAppTableByAppID(appId);
     }
+    @DeleteMapping("{appId}/delete/{tableId}/")
+    public List<AppTable> deleteApp(@PathVariable(value = "tableId")Long tableId,@PathVariable(value = "appId")Long appId){
+        System.out.println("b4 in impl");
+        return appTableService.deleteAppById(appId,tableId);
+    }
+    @PutMapping("{tableId}/")
+    public ResponseEntity<AppTable> editTable(@PathVariable(value = "userId")Long userID,@RequestBody AppTable table){
+       AppTable appTable =appTableService.editTable(table,userID);
+       return new ResponseEntity<>(appTable,HttpStatus.OK);
+
+    }
 }

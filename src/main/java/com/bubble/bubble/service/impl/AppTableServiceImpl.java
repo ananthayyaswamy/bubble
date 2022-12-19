@@ -37,4 +37,21 @@ public class AppTableServiceImpl implements AppTableService {
     List<AppTable> appTables= appTableRepository.findByAppId(appId);
     return appTables;
     }
+
+    @Override
+    public List<AppTable> deleteAppById(long appId,long tableId) {
+        System.out.println("in impl");
+        appTableRepository.deleteById(tableId);
+        return getAppTableByAppID(appId);
+    }
+
+    @Override
+    public AppTable editTable(AppTable table, long userId) {
+       AppTable appTable=appTableRepository.findById(table.getAppTableId()).orElseThrow(() -> new ResourceNotFoundException("AppTable", "id", table.getAppTableId()));
+appTable.setPrimaryKey(table.getPrimaryKey());
+appTable.setPhysicalName(table.getPhysicalName());
+appTable.setLogicalName(table.getLogicalName());
+AppTable updatedTable=appTableRepository.save(appTable);
+return updatedTable;
+    }
 }
